@@ -14,12 +14,13 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ActiveToggleDropdownItem, DeleteDropdownItem } from '../_components/ProductsActions';
 
 export default function AdminProductPage() {
     return (
         <>
             <div className='flex justify-between items-center gap-4'>
-                <PageHeader>producs header</PageHeader>
+                <PageHeader>Products</PageHeader>
                 <Button asChild>
                     <Link href={"/admin/products/new"}>Add Product</Link>
                 </Button>
@@ -91,16 +92,24 @@ async function ProductsTable() {
                                             Download
                                         </a>
                                     </DropdownMenuItem>
+
                                     <DropdownMenuItem asChild>
                                         <Link href={`/admin/products/${product.id}/edit`} >
                                             Edit
                                         </Link>
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <Link href={`/admin/products/${product.id}/delete`} >
-                                            Delete
-                                        </Link>
-                                    </DropdownMenuItem>
+
+                                    <ActiveToggleDropdownItem
+                                        id={product.id}
+                                        isAvailableForPurchase={product.isAvailableForPurchase}
+                                    />
+
+                                    <DropdownMenuSeparator />
+
+                                    <DeleteDropdownItem
+                                        id={product.id}
+                                        disabled={product._count.orders > 0}
+                                    />
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>
