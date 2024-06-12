@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import db from '@/db/db';
-import { formatCurrency, formatNumber } from '@/db/formatters';
+import { formatCurrency, formatNumber } from '@/lib/formatters';
 import React from 'react';
 
 async function getSalesData() {

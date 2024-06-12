@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import db from '@/db/db';
 import { CheckCircle2, MoreVertical, XCircleIcon } from 'lucide-react';
-import { formatCurrency, formatNumber } from '@/db/formatters';
+import { formatCurrency, formatNumber } from '@/lib/formatters';
 
 import {
     DropdownMenu,
